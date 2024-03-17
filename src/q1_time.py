@@ -18,6 +18,17 @@ from typing import List, Tuple
 
 def q1_time(file_path: str) -> List[Tuple[datetime.date, str]]:
 
+    # ---------------------
+    # Recibe un nombre de archivo y obtiene el top 10 fechas donde hay más tweets. Mencionar el usuario (username) que más publicaciones tiene por cada uno de esos días. 
+    # 
+    # Param:
+    #   file_path: ruta y nombre del archivo a procesar. 
+    # 
+    # Retorna:
+    #   Lista de Tupla [fecha en formato datetime.date , username str]
+    #   
+    # ---------------------
+
 
     def procesar_data_file(data_bloque, tweets_fecha, tweets_fecha_user):
 
@@ -36,7 +47,7 @@ def q1_time(file_path: str) -> List[Tuple[datetime.date, str]]:
         
         for row in data_bloque:
 
-
+            # Se verifica el tipo de dato, para saber la forma de extraerlo
             if isinstance(row, str):
                 tweet = json.loads(row)
             else:
@@ -66,6 +77,8 @@ def q1_time(file_path: str) -> List[Tuple[datetime.date, str]]:
         # Si el archivo no es especificado se usa los indicados en Config
         file_path = config.data_path + config.data_file
 
+
+    # Validamos el archivo de datos
     bValid, sMsg = common_functions.validate_file(file_path)
 
     if not bValid:
@@ -115,6 +128,7 @@ def q1_time(file_path: str) -> List[Tuple[datetime.date, str]]:
             procesar_data_file(archivo, tweets_fecha, tweets_fecha_user)
 
 
+
     # De cualquier metodo alicado se tiene la data compilada en las estructuras "tweets_fecha" y "tweets_fecha_user"
     # Ordenamos las lista tweets_fecha de forma descendente por su valor y lo restringimos al TOP N
 
@@ -133,6 +147,7 @@ def q1_time(file_path: str) -> List[Tuple[datetime.date, str]]:
         #Formateamos la fecha en el especificado
         fecha_date = datetime.strptime(fecha, "%Y-%m-%d").date()
 
+        #Creamos la Tupla
         lista_resultado_tuplas.append((fecha_date, top_user_fecha))
 
     return lista_resultado_tuplas
