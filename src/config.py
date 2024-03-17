@@ -34,7 +34,7 @@ data_read_size = 100000
 
 
 
-use_spark_service = False
+use_spark_service = True
 # ---------------------
 # -- Indica si usa un servicio de Apache Spark.
 # -- Si es False , la carga de archivos se realiza directa por filesystem

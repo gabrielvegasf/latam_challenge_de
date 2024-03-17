@@ -1,11 +1,11 @@
 import os
 import importlib
 import concurrent.futures
-from multiprocessing import Pool
 from pyspark.sql import SparkSession
 from collections import defaultdict
-from datetime import datetime
 import json
+
+from datetime import datetime
 
 import resource
 import humanize
@@ -71,6 +71,7 @@ def q1_time(file_path: str) -> List[Tuple[datetime.date, str]]:
 
     config = importlib.import_module("config")
     common_functions = importlib.import_module("common_functions")
+    spark_functions = importlib.import_module("spark_functions")
 
 
     if file_path == "":
@@ -92,7 +93,7 @@ def q1_time(file_path: str) -> List[Tuple[datetime.date, str]]:
         # ---------------------
 
         # Creamos una Session Spark
-        objSpark = common_functions.create_spark_session()
+        objSpark = spark_functions.create_spark_session()
 
         # Leer el archivo a un Spark DataFrame 
         sdf = objSpark.read.text(file_path)
@@ -105,7 +106,7 @@ def q1_time(file_path: str) -> List[Tuple[datetime.date, str]]:
         with concurrent.futures.ThreadPoolExecutor() as executor:
             
             # Procesar cada bloque del archivo en un hilo separado
-            futures = [executor.submit(procesar_data_file, data_bloque, tweets_fecha, tweets_fecha_user) for data_bloque in common_functions.read_spark_dataframe(sdf, registro_actual, data_size)]
+            futures = [executor.submit(procesar_data_file, data_bloque, tweets_fecha, tweets_fecha_user) for data_bloque in spark_functions.read_spark_dataframe(sdf, registro_actual, data_size)]
 
             # Esperar a que todos los hilos terminen
             for future in concurrent.futures.as_completed(futures):

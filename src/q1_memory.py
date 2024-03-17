@@ -54,7 +54,6 @@ def q1_memory(file_path: str) -> List[Tuple[datetime.date, str]]:
     config = importlib.import_module("config")
     common_functions = importlib.import_module("common_functions")
 
-
     if file_path == "":
         # Si el archivo no es especificado se usa los indicados en Config
         file_path = config.data_path + config.data_file
