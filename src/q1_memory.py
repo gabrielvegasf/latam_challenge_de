@@ -86,8 +86,7 @@ def q1_memory(file_path: str) -> List[Tuple[datetime.date, str]]:
     # Ordenamos las lista tweets_fecha de forma descendente por su valor y lo restringimos al TOP N
 
     top_10_tweets_fecha_ordenado = sorted(tweets_fecha.items(), key=lambda item: item[1], reverse=True)[:10]
-    print(top_10_tweets_fecha_ordenado)
-
+    
     # Del Top N obtenido buscamos en tweets_fecha_user para obtner los users que tienen mas tweets esa fecha
     
     for fecha, total_tweets in top_10_tweets_fecha_ordenado:
