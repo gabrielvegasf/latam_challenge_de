@@ -50,7 +50,7 @@ def create_spark_session():
             .appName(spark_app_name) \
             .config("spark.jars.packages", "com.microsoft.azure:azure-storage:8.6.0") \
             .config("spark.hadoop.fs.azure", "org.apache.hadoop.fs.azure.NativeAzureFileSystem") \
-            .config("spark.hadoop.fs.azure.account.key." + SPARK_AZURE_STORAGE_ACCOUNT +".blob.core.windows.net", config.SPARK_AZURE_STORAGE_ACCOUNT_KEY) \
+            .config("spark.hadoop.fs.azure.account.key." + config.SPARK_AZURE_STORAGE_ACCOUNT +".blob.core.windows.net", config.SPARK_AZURE_STORAGE_ACCOUNT_KEY) \
             .getOrCreate()
 
     return spark
