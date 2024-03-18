@@ -47,12 +47,20 @@ def q1_memory(file_path: str) -> List[Tuple[datetime.date, str]]:
 
     # ---------------------
 
+    # Importacion de Modulos
+
+    # Archvo de Configuracion 
+    config = importlib.import_module("config")
+
+    # Funciones Comunes
+    common_functions = importlib.import_module("common_functions")
+
+    # ---------------------
+
     tweets_fecha = defaultdict(int)
     tweets_fecha_user = defaultdict(lambda: defaultdict(int))
     lista_resultado_tuplas = []
 
-    config = importlib.import_module("config")
-    common_functions = importlib.import_module("common_functions")
 
     if file_path == "":
         # Si el archivo no es especificado se usa los indicados en Config

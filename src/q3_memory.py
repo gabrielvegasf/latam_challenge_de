@@ -43,10 +43,18 @@ def q3_memory(file_path: str) -> List[Tuple[str, int]]:
 
     # ---------------------
 
-    mentionedUsers_list = defaultdict(int)
+    # Importacion de Modulos
 
+    # Archvo de Configuracion 
     config = importlib.import_module("config")
+
+    # Funciones Comunes
     common_functions = importlib.import_module("common_functions")
+
+    # ---------------------
+
+
+    mentionedUsers_list = defaultdict(int)
 
     if file_path == "":
         # Si el archivo no es especificado se usa los indicados en Config

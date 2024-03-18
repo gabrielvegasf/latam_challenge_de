@@ -61,12 +61,19 @@ def q2_time(file_path: str) -> List[Tuple[str, int]]:
 
     # ---------------------
 
-    emoji_list = defaultdict(int)
-    
+    # Archvo de Configuracion 
     config = importlib.import_module("config")
+
+    # Funciones Comunes
     common_functions = importlib.import_module("common_functions")
+
+    # Funciones para Manejo de Spark
     spark_functions = importlib.import_module("spark_functions")
 
+    # ---------------------
+
+    emoji_list = defaultdict(int)
+    
     if file_path == "":
         # Si el archivo no es especificado se usa los indicados en Config
         file_path = config.data_path + config.data_file

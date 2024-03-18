@@ -44,10 +44,18 @@ def q2_memory(file_path: str) -> List[Tuple[str, int]]:
 
     # ---------------------
 
+    # Importacion de Modulos
+
+    # Archvo de Configuracion 
+    config = importlib.import_module("config")
+
+    # Funciones Comunes
+    common_functions = importlib.import_module("common_functions")
+
+    # ---------------------
+
     emoji_list = defaultdict(int)
     
-    config = importlib.import_module("config")
-    common_functions = importlib.import_module("common_functions")
 
     if file_path == "":
         # Si el archivo no es especificado se usa los indicados en Config

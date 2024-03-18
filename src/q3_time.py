@@ -55,6 +55,18 @@ def q3_time(file_path: str) -> List[Tuple[str, int]]:
                 for mentionedUsers_item in mentionedUsers_tweet:
                     mentionedUsers_list[ mentionedUsers_item['username'] ] += 1            
 
+
+    # ---------------------
+
+    # Archvo de Configuracion 
+    config = importlib.import_module("config")
+
+    # Funciones Comunes
+    common_functions = importlib.import_module("common_functions")
+
+    # Funciones para Manejo de Spark
+    spark_functions = importlib.import_module("spark_functions")
+
     # ---------------------
 
     mentionedUsers_list = defaultdict(int)

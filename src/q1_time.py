@@ -64,14 +64,20 @@ def q1_time(file_path: str) -> List[Tuple[datetime.date, str]]:
 
     # ---------------------
 
+    # Archvo de Configuracion 
+    config = importlib.import_module("config")
+
+    # Funciones Comunes
+    common_functions = importlib.import_module("common_functions")
+
+    # Funciones para Manejo de Spark
+    spark_functions = importlib.import_module("spark_functions")
+
+    # ---------------------
 
     tweets_fecha = defaultdict(int)
     tweets_fecha_user = defaultdict(lambda: defaultdict(int))
     lista_resultado_tuplas = []
-
-    config = importlib.import_module("config")
-    common_functions = importlib.import_module("common_functions")
-    spark_functions = importlib.import_module("spark_functions")
 
 
     if file_path == "":
